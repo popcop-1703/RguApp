@@ -12,6 +12,8 @@ public class SecondActivity extends AppCompatActivity {
     public double speed = 0;
     public double point = 0;
     public int to_switch = 0;
+    public int Hour_int,Minute_int,Second_int, Millisecond_int = 0;
+    public double Final_count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,22 +29,34 @@ public class SecondActivity extends AppCompatActivity {
 
         EditText editText1 = findViewById(R.id.editTextTime1);
         String hour = editText1.getText().toString();
-        int Hour_int = Integer.parseInt(hour);
+        if (hour.equals(""))
+            Hour_int = 0;
+        else
+            Hour_int = Integer.parseInt(hour);
 
         EditText editText2 = findViewById(R.id.editTextTime2);
         String minute = editText2.getText().toString();
-        int Minute_int = Integer.parseInt(minute);
+        if (minute.equals(""))
+            Minute_int = 0;
+        else
+            Minute_int = Integer.parseInt(minute);
 
         EditText editText3 = findViewById(R.id.editTextTime3);
         String second = editText3.getText().toString();
-        int Second_int = Integer.parseInt(second);
+        if (second.equals(""))
+            Second_int = 0;
+        else
+            Second_int = Integer.parseInt(second);
 
         EditText editText4 = findViewById(R.id.editTextTime4);
         String millisecond = editText4.getText().toString();
-        int Millisecond_int = Integer.parseInt(millisecond);
+        if (millisecond.equals(""))
+            Millisecond_int = 0;
+        else
+            Millisecond_int = Integer.parseInt(millisecond);
 
 
-        double Final_count = (Millisecond_int + (Second_int * 1000) + (Minute_int * 60 * 1000) + (Hour_int * 60 * 60 * 1000))/1000;
+        Final_count = (Millisecond_int + (Second_int * 1000) + (Minute_int * 60 * 1000) + (Hour_int * 60 * 60 * 1000))/1000;
         speed = distance / Final_count;
 
         if (distance == 1000 & gender == 1 & style == 2)
