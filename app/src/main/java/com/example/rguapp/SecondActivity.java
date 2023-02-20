@@ -14,6 +14,7 @@ public class SecondActivity extends AppCompatActivity {
     public int to_switch = 0;
     public int Hour_int,Minute_int,Second_int, Millisecond_int = 0;
     public double Final_count = 0;
+    public int gender, style, distance = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +24,9 @@ public class SecondActivity extends AppCompatActivity {
 
     public void CountButton(View view){
         Bundle arguments = getIntent().getExtras();
-        int gender = arguments.getInt("gender");
-        int style = arguments.getInt("style");
-        int distance = arguments.getInt("distance");
+        gender = arguments.getInt("gender");
+        style = arguments.getInt("style");
+        distance = arguments.getInt("distance");
 
         EditText editText1 = findViewById(R.id.editTextTime1);
         String hour = editText1.getText().toString();
@@ -59,12 +60,14 @@ public class SecondActivity extends AppCompatActivity {
         Final_count = (Millisecond_int + (Second_int * 1000) + (Minute_int * 60 * 1000) + (Hour_int * 60 * 60 * 1000))/1000;
         speed = distance / Final_count;
 
-        if (distance == 1000 & gender == 1 & style == 2)
+        if (distance == 1000 && gender == 1 && style == 2)
             point = 1;
 
         //Toast.makeText(this, Hour_int, Toast.LENGTH_SHORT).show();
         System.out.println(Final_count);
         System.out.println(distance);
+        System.out.println(gender);
+        System.out.println(style);
         System.out.println(speed);
         System.out.println(point);
     }
