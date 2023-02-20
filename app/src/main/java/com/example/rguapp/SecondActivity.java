@@ -9,17 +9,13 @@ import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
-    public double speed = 0;
-    public double point = 0;
-    public int to_switch = 0;
+    public double speed, point, Final_count = 0;
     public int Hour_int,Minute_int,Second_int, Millisecond_int = 0;
-    public double Final_count = 0;
-    public int gender, style, distance = 0;
+    public int gender, style, distance, point_int = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
     }
 
     public void CountButton(View view){
@@ -60,8 +56,11 @@ public class SecondActivity extends AppCompatActivity {
         Final_count = (Millisecond_int + (Second_int * 1000) + (Minute_int * 60 * 1000) + (Hour_int * 60 * 60 * 1000))/1000;
         speed = distance / Final_count;
 
-        if (distance == 1000 && gender == 1 && style == 2)
-            point = 1;
+        switch (style){
+            case distance = 1000 & gender = 1 & style = 1:
+                point = 1;
+                break;
+        }
 
         //Toast.makeText(this, Hour_int, Toast.LENGTH_SHORT).show();
         System.out.println(Final_count);
@@ -74,7 +73,6 @@ public class SecondActivity extends AppCompatActivity {
 }
 
 /*
-        2)Посчитать формулы
-        3)Добавить вывод на экран скорости и очков
-        4)Привести все в порядок
+        1)Посчитать формулы
+        2)Привести все в порядок
  */

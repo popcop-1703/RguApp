@@ -1,38 +1,27 @@
 package com.example.rguapp;
 
-import static com.example.rguapp.R.id.radioButton_male;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-    public int gender = 0;
-    public int style = 0;
-    public int distance = 0;
+    public int gender = 1;
+    public int style = 2;
+    public int distance = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //анимация для "Добро пожаловать"
-        /*TextView textView = findViewById(R.id.HiText);
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.hi_text_animation);
-        textView.startAnimation(animation);*/
     }
 
     public void showMenu(View view){
@@ -86,66 +75,39 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return true;
     }
 
-    View.OnClickListener listener = new View.OnClickListener() {
-        @Override public void onClick(View view) {
-            boolean checked = ((RadioButton) view).isChecked();
+    public void onRadioButtonClicked_gender(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
 
-            switch (view.getId()){
-                case R.id.radioButton_male: {
-                    if (checked){
-                        gender = 1;
-                        Toast.makeText(getApplicationContext(), "Первый элемент нажат", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-                }
-                case R.id.radioButton_female:{
-                    if(checked) {
-                        gender = 2;
-                        Toast.makeText(getApplicationContext(), "2 элемент нажат", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-                }
-            }
+        switch (view.getId()){
+            case R.id.radioButton_male:
+                if (checked)
+                    gender = 1;
+                break;
+
+            case R.id.radioButton_female:
+                if(checked)
+                    gender = 2;
+                break;
         }
-    };
+    }
 
+    public void onRadioButtonClicked_style(View view){
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()){
+            case R.id.StyleFree:
+                if (checked)
+                    style = 1;
+                break;
+
+            case R.id.StyleClassic:
+                if (checked)
+                    style = 2;
+                break;
+        }
+    }
 
     public void SaveAll(View view){
-
-        if(distance == 0) {
-            distance = 1000;
-        }
-        //присвоение данных для RadioGroup_gender
-        /*RadioGroup radioGroup_gender = findViewById(R.id.radioGroup_gender);
-        radioGroup_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                switch (checkedId){
-                    case R.id.radioButton_male:
-                        gender = 1;
-                        break;
-                    case R.id.radioButton_female:
-                        gender = 2;
-                        break;
-                }
-            }
-        });
-*/
-        //присвоение данных для RadioGroup_style
-       /* RadioGroup radioGroup_style = findViewById(R.id.radioGroup_style);
-        radioGroup_style.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                switch (checkedId){
-                    case R.id.StyleClassic:
-                        style = 1;
-                        break;
-                    case R.id.StyleFree:
-                        style = 2;
-                        break;
-                }
-            }
-        });*/
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("gender", gender);
         intent.putExtra("style", style);
