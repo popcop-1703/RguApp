@@ -3,6 +3,7 @@ package com.example.rguapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
@@ -13,7 +14,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickListener {
     public int gender = 1;
     public int style = 2;
     public int distance = 1000;
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
     public void showMenu(View view){
         PopupMenu menu = new PopupMenu(this, view);
         menu.setOnMenuItemClickListener(this);
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         inf.inflate(R.menu.main, menu.getMenu());
         menu.show();
     }
-
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Toast.makeText(this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
         return true;
     }
-
     public void onRadioButtonClicked_gender(View view) {
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -90,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 break;
         }
     }
-
     public void onRadioButtonClicked_style(View view){
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -106,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 break;
         }
     }
-
     public void SaveAll(View view){
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("gender", gender);
