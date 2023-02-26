@@ -1,6 +1,6 @@
 package com.example.rguapp;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,18 +9,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class SecondActivity extends Activity {
 
     public double speed, point, Final_count = 0;
     public int Hour_int,Minute_int,Second_int, Millisecond_int = 0;
     public int gender, style, distance, point_int = 0;
     public static double a,b,c,d,x1,x2,x3,repeat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        TextView textView1 = findViewById(R.id.textView_speed);
+        textView1.setText("");
+        TextView textView2 = findViewById(R.id.textView_point);
+        textView2.setText("");
     }
 
     public static void getInputs() {
@@ -40,6 +43,7 @@ public class SecondActivity extends Activity {
         System.out.println("A=" + a + ", B=" + b + ", C=" + c + ", D=" + d);
     }
     public void CountButton(View view){
+        DecimalFormat myFormat = new DecimalFormat("#.##");
         Bundle arguments = getIntent().getExtras();
         gender = arguments.getInt("gender");
         style = arguments.getInt("style");
@@ -77,20 +81,50 @@ public class SecondActivity extends Activity {
         Final_count = (Millisecond_int + (Second_int * 1000) + (Minute_int * 60 * 1000) + (Hour_int * 60 * 60 * 1000))/1000;
         speed = distance / Final_count;
 
-        //if(distance == 1000 && gender == 1 && style == 1)
+        if(distance == 1000 && gender == 1 && style == 1){
+            a = -3.800610269 * Math.pow(10,-10);
+            b = 5.351939033 * Math.pow(10,-7);
+            c = 0.002888134079;
+            d = 4.166654127 - speed;
+        } else if (distance == 1000 && gender == 1 && style == 2) {
+            a = -3.446864478 * Math.pow(10,-10);
+            b = 4.462887807 * Math.pow(10,-7);
+            c = 0.002635557119;
+            d = 4.61501587 - speed;
+        } else if (distance == 1000 && gender == 2 && style == 1) {
+            a = -3.114583333 * Math.pow(10,-10);
+            b = 4.344426407 * Math.pow(10,-7);
+            c = 0.00254557052;
+            d = 3.71202381 - speed;
+        } else if (distance == 1000 && gender == 2 && style == 2) {
+            a = -2.767860199 * Math.pow(10,-10);
+            b = 3.483833439 * Math.pow(10,-7);
+            c = 0.0022779484;
+            d = 3.6804441 - speed;
+        } else {
+
+        }
+        calcRepeat();
+        calcX1();
+        calcX2();
+        calcX3();
+
 
         TextView textView1 = findViewById(R.id.textView_speed);
-        textView1.setText("Ваша скорость = " + speed + " М/C");
+        textView1.setText("Ваша скорость = " + myFormat.format(speed) + " М/C");
         TextView textView2 = findViewById(R.id.textView_point);
-        textView2.setText("Ваше количество очков = " + point);
+        textView2.setText("Ваше количество очков = " + myFormat.format(x1));
 
         //Toast.makeText(this, Hour_int, Toast.LENGTH_SHORT).show();
-        System.out.println(Final_count);
-        System.out.println(distance);
-        System.out.println(gender);
-        System.out.println(style);
-        System.out.println(speed);
-        System.out.println(point);
+        System.out.println("Final_count " + Final_count);
+        System.out.println("distance " + distance);
+        System.out.println("gender " + gender);
+        System.out.println("style " + style);
+        System.out.println("speed " + speed);
+        System.out.println("point " + point);
+        System.out.println("x1 " + x1);
+        System.out.println("x2 " + x2);
+        System.out.println("x2 " + x3);
     }
     //Calculates the repeated bit of the equation and returns it
     public static double calcRepeat() {
