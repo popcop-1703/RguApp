@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SecondActivity extends Activity {
 
     public double speed, point, Final_count = 0;
     public int Hour_int,Minute_int,Second_int, Millisecond_int = 0;
-    public int gender, style, distance, point_int = 0;
+    public int gender, style, distance = 0;
     public static double a,b,c,d,x1,x2,x3,repeat;
 
     @Override

@@ -1,8 +1,6 @@
 package com.example.rguapp;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -103,7 +101,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 break;
         }
     }
-    public void SaveAll(View view){
+    public void scoring(View view){
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("gender", gender);
         intent.putExtra("style", style);
@@ -111,5 +109,13 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         startActivity(intent);
         System.out.println(gender);
         System.out.println(style);
+    }
+
+    public void speedCalculation(View view){
+        Intent intent = new Intent(this, ThirdActivity.class);
+        intent.putExtra("gender", gender);
+        intent.putExtra("style", style);
+        intent.putExtra("distance", distance);
+        startActivity(intent);
     }
 }

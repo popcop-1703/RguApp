@@ -10,6 +10,22 @@
 >
 
     <Button
+        android:id="@+id/speedCalculation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="255dp"
+        android:onClick="speedCalculation"
+        android:text="расчет скорости"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scoring"
+        app:layout_constraintTop_toBottomOf="@+id/btn1"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <Button
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,21 +39,19 @@
         app:layout_constraintVertical_bias="0.404" />
 
     <Button
-        android:id="@+id/SaveAll"
+        android:id="@+id/scoring"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="143dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="38dp"
-        android:layout_marginEnd="143dp"
         android:layout_marginBottom="255dp"
-        android:onClick="SaveAll"
-        android:text="Сохранить"
+        android:onClick="scoring"
+        android:text="Расчет очков"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/speedCalculation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <RadioGroup
         android:id="@+id/radioGroup_gender"
