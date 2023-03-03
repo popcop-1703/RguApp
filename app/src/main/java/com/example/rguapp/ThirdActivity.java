@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.text.DecimalFormat;
 
 public class ThirdActivity extends Activity {
@@ -23,6 +25,7 @@ public class ThirdActivity extends Activity {
     public void buttonRecommendSpeed(View view){
         DecimalFormat myFormat = new DecimalFormat("#.##");
         TextView textView_speed = findViewById(R.id.recommendSpeed);
+        TextView textView_time = findViewById(R.id.recommendTime);
         Bundle arguments = getIntent().getExtras();
         gender = arguments.getInt("gender");
         style = arguments.getInt("style");
@@ -270,5 +273,8 @@ public class ThirdActivity extends Activity {
         speed = a * Math.pow(point,3) + b * Math.pow(point,2) + c * point + d;
         time = distance / speed;
         textView_speed.setText("Рекомендованная скорость = " + myFormat.format(speed) + "М/C");
+        textView_time.setText("Рекомедованное время = " + time);
     }
+    //Сделать расчет скорости
+    //довести до ума обратную задачу
 }
