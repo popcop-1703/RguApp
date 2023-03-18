@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_app"
-    tools:context=".SecondActivity">
+    tools:context=".SecondActivity"
+    android:screenOrientation="portrait">
 
     <Button
         android:id="@+id/button"

@@ -2,6 +2,7 @@ package com.example.rguapp;
 
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,12 +10,14 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.Console;
 import java.text.DecimalFormat;
 
 public class ThirdActivity extends Activity {
 
     public int point,gender,style,distance;
-    public double speed, time = 0;
+    public double speed = 0;
+    public long time;
     public double a,b,c,d = 0;
 
     @Override
@@ -271,10 +274,17 @@ public class ThirdActivity extends Activity {
         }
 
         speed = a * Math.pow(point,3) + b * Math.pow(point,2) + c * point + d;
-        time = distance / speed;
+        time = (long) (distance / speed);
+        textView_speed.setTextColor(Color.BLACK);
+        textView_time.setTextColor(Color.BLACK);
         textView_speed.setText("Рекомендованная скорость = " + myFormat.format(speed) + "М/C");
-        textView_time.setText("Рекомедованное время = " + time);
+        textView_time.setText("Результат =  " + timeToString(time));
+        System.out.println(time);
     }
-    //Сделать расчет скорости
-    //довести до ума обратную задачу
+    private static String timeToString(long time) {
+        long hour = time / 3600,
+                min = time / 60 % 60,
+                sec = time / 1 % 60;
+        return String.format("%02d:%02d:%02d", hour, min, sec);
+    }
 }
